@@ -22,5 +22,6 @@ install:
 #  - psql -c "CREATE DATABASE mydb;" -U postgres
 
 script:
+  - cd sign_files
   - python3 manage.py test
 #  - python manage.py syncdb --noinput
