@@ -1,0 +1,37 @@
+{% extends "./base.html" %}
+{% load i18n %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+			{% if form.is_valid %}
+				<div class="alert alert-success">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>Success!</strong>
+					<p style="word-break: break-all">
+						{{ sign }}
+					</p>
+				</div>
+			{% endif %}
+			<div class="well">
+				<form action="{% url 'sign' %}" method="POST" enctype="multipart/form-data" role="form">
+					{% csrf_token %}
+					
+					<legend>
+						{% trans "Sign file" %}
+					</legend>
+				
+					<div class="form-group">
+						<label for="{{ form.file.id_for_label }}">{{ form.file.label }}</label>
+						{{ form.file }}
+					</div>
+
+					<button type="submit" class="btn btn-primary">
+						{% trans "Submit" %}
+					</button>
+				</form>
+			</div>
+
+		</div>
+	</div>
+{% endblock content %}
