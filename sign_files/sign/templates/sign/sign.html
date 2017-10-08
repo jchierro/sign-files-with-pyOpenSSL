@@ -1,22 +1,37 @@
 {% extends "./base.html" %}
 {% load i18n %}
 
-{% comment %}
-	Improve
-{% endcomment %}
-
 {% block content %}
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-			{% if form.is_valid %}
-				<div class="alert alert-success">
+			
+			{% if form.is_valid or form.errors %}
+				<div class="alert 
+				{% if form.is_valid %}
+					alert-success
+				{% elif form.errors %}
+					alert-danger	
+				{% endif %}
+				">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Success!</strong>
-					<p style="word-break: break-all">
-						{{ sign }}
-					</p>
+					
+					{% if form.is_valid %}
+						<strong>Success!</strong>
+						<p style="word-break: break-all">
+							{{ sign }}
+						</p>
+					{% elif form.errors %}
+						<strong>
+							{% trans "Error!" %}
+						</strong>
+						{% for error in form.file.errors %}
+							{{ form.file.label }}: {{ error }}
+						{% endfor %}
+						</ul>
+					{% endif %}
 				</div>
 			{% endif %}
+			
 			<div class="well">
 				<form action="{% url 'sign' %}" method="POST" enctype="multipart/form-data" role="form">
 					{% csrf_token %}

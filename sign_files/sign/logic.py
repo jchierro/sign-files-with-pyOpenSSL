@@ -16,6 +16,23 @@ DIGEST = getattr(settings, 'DIGEST', None)
 log = logging.getLogger(__name__)
 
 
+def to_binary(sign):
+    """
+    Function that converts the signature to binary.
+    """
+
+    try:
+        # Str to base64 to binary.
+        sign = base64.decodebytes(str.encode(sign))
+    except Exception as error:
+        # Log.
+        log.error(
+            '[ERROR][LOGIC - to_binary]: {error} '.format(error=str(error)))
+        return False
+
+    return sign
+
+
 class DigitalSignature(object):
     """
     Class with two static methods that sign or validate a file.
@@ -40,8 +57,7 @@ class DigitalSignature(object):
 
         # Data.
         file = data.get('file')
-        # Str to base64 to binary.
-        sign = base64.decodebytes(str.encode(data.get('sign')))
+        sign = data.get('sign')
         result = False
 
         try:
@@ -51,7 +67,7 @@ class DigitalSignature(object):
         except crypto.Error as error:
             # Log.
             log.error(
-                '[pyOpenSSL - Verify]: {error} '.format(error=str(error)))
+                '[ERROR][pyOpenSSL - Verify]: {error} '.format(error=str(error)))
         finally:
             file.close()
 
@@ -82,7 +98,8 @@ class Certificate(object):
             file.close()
         except IOError as error:
             # Log.
-            log.error('[Class Certificate]: {error} '.format(error=str(error)))
+            log.error('[ERROR][Class Certificate]: {error} '.format(
+                error=str(error)))
             raise error
 
     def __load_pkcs12(self):
