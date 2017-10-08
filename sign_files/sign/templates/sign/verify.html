@@ -11,23 +11,25 @@
 			{% if form.is_valid %}
 				<div class="alert alert-success">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Success!</strong>
-					<p style="word-break: break-all">
-						{{ sign }}
-					</p>
+					<strong>Success!</strong> {{ msg }}
 				</div>
 			{% endif %}
 			<div class="well">
-				<form action="{% url 'sign' %}" method="POST" enctype="multipart/form-data" role="form">
+				<form action="{% url 'verify' %}" method="POST" enctype="multipart/form-data" role="form">
 					{% csrf_token %}
 					
 					<legend>
-						{% trans "Sign file" %}
+						{% trans "Verify file" %}
 					</legend>
 				
 					<div class="form-group">
 						<label for="{{ form.file.id_for_label }}">{{ form.file.label }}</label>
 						{{ form.file }}
+					</div>
+
+					<div class="form-group">
+						<label for="{{ form.sign.id_for_label }}" class="control-label">{{ form.sign.label }}</label>
+						<textarea name="{{ form.sign.name }}" id="{{ form.sign.id_for_label }}" class="form-control" rows="6" required="required"></textarea>
 					</div>
 
 					<button type="submit" class="btn btn-primary">
