@@ -1,19 +1,54 @@
 {% extends "./base.html" %}
 {% load i18n %}
 
-{% comment %}
-	Improve
-{% endcomment %}
-
 {% block content %}
 	<div class="row">
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
-			{% if form.is_valid %}
-				<div class="alert alert-success">
+			
+			{% if messages %}
+				{% for message in messages %}
+        			<div class="alert
+        			{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        				alert-danger
+        			{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        				alert-success
+        			{% endif %}
+    				">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<strong>
+							{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+        						{% trans "Error!" %}
+		        			{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+		        				{% trans "Success!" %}
+		        			{% endif %}
+						</strong>
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+
+			{% if form.errors %}
+				<div class="alert alert-danger">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Success!</strong> {{ msg }}
+					<strong>
+						{% trans "Error!" %}
+					</strong>
+					<p>
+						<ul>
+							{% for field in form %}
+          						{% if field.errors %}
+            						{% for error in field.errors %}
+										<li>
+											{{ field.label }}: {{ error }}
+										</li>
+									{% endfor %}
+								{% endif %}
+							{% endfor %}	
+						</ul>
+					</p>
 				</div>
 			{% endif %}
+			
 			<div class="well">
 				<form action="{% url 'verify' %}" method="POST" enctype="multipart/form-data" role="form">
 					{% csrf_token %}

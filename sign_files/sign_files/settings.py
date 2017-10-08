@@ -73,13 +73,14 @@ WSGI_APPLICATION = 'sign_files.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+"""
 
 
 # Password validation
@@ -119,3 +120,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Data
+CERTIFICATE_PATH = None
+PASSWORD = None
+DIGEST = None
+
+# Import local_settings
+try:
+    from .local_settings import *
+except ImportError:
+    pass
