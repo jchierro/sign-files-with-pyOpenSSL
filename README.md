@@ -9,6 +9,19 @@ Small web application to be able to digitally sign and verify a file using a dig
 ## Prerequisites
  - Django 1.11.5
  - pyOpenSSL 17.3.0
+ - Have an FNMT certificate (http://www.fnmt.es/)
 
 ## Features
- - ...
+ - Sign a file.
+ - Verfify a file.
+ - ....
+ 
+## Installation in development mode
+ - Clone the repository (git clone).
+ - Create an environment with virtualenv: python3 -m venv env.
+ - Install packages from the requirements file: pip install -r requirements.txt
+ - Starting the application: python3 manage.py runserver
+
+## TODO
+ - Unit tests
+ - ... 
