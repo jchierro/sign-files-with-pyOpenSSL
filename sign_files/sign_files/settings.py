@@ -122,12 +122,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Data
-CERTIFICATE_PATH = None
-PASSWORD = None
-DIGEST = None
-
-# Import local_settings
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+CERTIFICATE_PATH = BASE_DIR + '/../certificate/localhost.p12'
+PASSWORD = 'passpass'
+DIGEST = 'sha512'
