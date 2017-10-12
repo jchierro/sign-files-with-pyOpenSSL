@@ -1,19 +1,27 @@
 language: python
 
+deploy:
+  provider: heroku
+  api_key:
+    secure: 91i0xfSPtaU96ZUtJ4n1ZJjF/+xOrbV9cR14B59vblbiTErReTQ8gwoLI9lI+xtjEpXEV3EX8YJ8RAJTp+e2EtJW8DJm1+NALVnZPOnugnNzkQgfIsxCk0UchgS98Ocl+TqJ1a2kjMFEuRQrCZ7xhf9xNQlmSJMxXpSYJWAx46nnUAfXO+VcA3xeT3EdbOTx7n4oYh1hqvb/OqCjtELTQVCODrZ8SdtoYMcO830qQhUkIS2UemNR+/m2lwYKmXCOf+8VSqP0rlEogbWzo5sRBUQgJHtRBTn0ctLgy1mjVi/xCySTP1vyFkTge+Ff4ivva3cO4WTANsGUPxrJab3nV3LHTGVINMxi7qTbPMYgiaD0OLt11QL1UIHjY+NQsZbXDRkXP2j1k9akqzwALPex7yJ7Fth1r66yaeycjUh1V7OTx20sidLHJyHCarrGxQPs46HhGrw14i3XqzD5vVGLL5ObdA022FVYei0VnzCrhfJJhrnKALqhpCWsYa9W5e+amBC0BRB7EEzthw3BxPFPFrFNNQlLYcyJCdRifCW7UTciAjacA9P0ns43rnOqEUGAT7MS/6w8JdoKq/5xUIZEfuLNaRYMVEKDpFdKZ7cudrhWLlElbjQh3I8qfq68rysVMZmmVfrwgl4/djyjAJWPqEIM3RGaPBtb6GzyXA2D5uA=
+  app: sign-files
+  on:
+    repo: jchierro/sign-files-with-pyOpenSSL
+
 python:
-  - 3.5
+- 3.5
 
 env:
-  - DJANGO=1.11.5
+- DJANGO=1.11.5
 
 before_install:
-  - export DJANGO_SETTINGS_MODULE=sign_files.settings
-  - export PYTHONPATH=$HOME/builds/jchierro/sign-files-with-pyOpenSSL
-  - export PIP_USE_MIRRORS=true
+- export DJANGO_SETTINGS_MODULE=sign_files.settings
+- export PYTHONPATH=$HOME/builds/jchierro/sign-files-with-pyOpenSSL
+- export PIP_USE_MIRRORS=true
 
 install:
-  - pip install -r requirements.txt
+- pip install -r requirements.txt
 
 script:
-  - cd sign_files
-  - python3 manage.py test
+- cd sign_files
+- python3 manage.py test
