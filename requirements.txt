@@ -1,3 +1,4 @@
 django==1.11.5
 pyopenssl==17.3.0
+coverage
 gunicorn
