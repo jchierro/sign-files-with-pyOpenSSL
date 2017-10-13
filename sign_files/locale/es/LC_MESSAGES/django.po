@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-06 17:56+0000\n"
+"POT-Creation-Date: 2017-10-13 16:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,76 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: sign/forms.py:21 sign/forms.py:29
+msgid "File"
+msgstr ""
+
+#: sign/forms.py:31
+msgid "Signature"
+msgstr ""
+
+#: sign/forms.py:41
+msgid "The signature does not have a valid format."
+msgstr ""
+
 #: sign/templates/sign/base.html:11 sign/templates/sign/base.html:35
 msgid "Sign your file"
-msgstr "Firma tu fichero"
+msgstr ""
 
-#: sign/templates/sign/base.html:41
+#: sign/templates/sign/base.html:42
 msgid "Home"
-msgstr "Inicio"
+msgstr ""
 
-#: sign/templates/sign/base.html:46
+#: sign/templates/sign/base.html:47
 msgid "Sign"
-msgstr "Firmar"
+msgstr ""
 
-#: sign/templates/sign/base.html:51
+#: sign/templates/sign/base.html:52
 msgid "Verify"
-msgstr "Verificar"
+msgstr ""
+
+#: sign/templates/sign/home.html:9
+msgid "Sign files with pyOpenSSL"
+msgstr ""
+
+#: sign/templates/sign/home.html:11
+msgid ""
+"\n"
+"\t\t\t\t\t\t    Small web application to be able to digitally sign and "
+"verify a file using a digital certificate and the pyOpenSSL library. "
+"Developed with Python and Django.\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: sign/templates/sign/home.html:17
+msgid "Learn more"
+msgstr ""
+
+#: sign/templates/sign/sign.html:25 sign/templates/sign/verify.html:20
+#: sign/templates/sign/verify.html:34
+msgid "Error!"
+msgstr ""
+
+#: sign/templates/sign/sign.html:40
+msgid "Sign file"
+msgstr ""
+
+#: sign/templates/sign/sign.html:49 sign/templates/sign/verify.html:71
+msgid "Submit"
+msgstr ""
+
+#: sign/templates/sign/verify.html:22
+msgid "Success!"
+msgstr ""
+
+#: sign/templates/sign/verify.html:57
+msgid "Verify file"
+msgstr ""
+
+#: sign/views.py:64
+msgid "The file has been successfully checked."
+msgstr ""
+
+#: sign/views.py:65
+msgid "The file cannot be verified with that signature."
+msgstr ""

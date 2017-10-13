@@ -16,14 +16,19 @@ python:
 env:
 - DJANGO=1.11.5
 
+install:
+- pip install -r requirements.txt
+- sudo pip install coveralls
+
 before_install:
 - export DJANGO_SETTINGS_MODULE=sign_files.settings
 - export PYTHONPATH=$HOME/builds/jchierro/sign-files-with-pyOpenSSL
 - export PIP_USE_MIRRORS=true
 
-install:
-- pip install -r requirements.txt
+after_success: 
+- coveralls
 
 script:
 - cd sign_files
-- python3 manage.py test
+- coverage run --source='.' manage.py test sign.tests.tests
+
