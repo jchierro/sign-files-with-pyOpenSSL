@@ -22,5 +22,3 @@ Small web application to be able to digitally sign and verify a file using a dig
  - Install packages from the requirements file: pip install -r requirements.txt
  - Starting the application: python3 manage.py runserver
 
-## TODO
- - Limit the size of the files to be signed/verified.

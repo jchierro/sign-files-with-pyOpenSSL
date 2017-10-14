@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'sign_files.middleware.RequestSizeMiddleware',
 ]
 
 ROOT_URLCONF = 'sign_files.urls'
@@ -121,3 +122,4 @@ STATIC_URL = '/static/'
 CERTIFICATE_PATH = BASE_DIR + '/../certificate/localhost.p12'
 PASSWORD = 'passpass'
 DIGEST = 'sha512'
+MAX_UPLOAD_SIZE = 10485760
